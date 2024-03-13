@@ -1,14 +1,19 @@
+import Navbar from "@/components/Navbar";
 import "@/assets/styles/globals.css";
 
 export const metadata = {
   title: "PropertyPulse | Find the Perfect Rental",
   description: "Find yyour dream rental property",
+  keywords: "rental, find rentals, find properties",
 };
 
 const MainLayout = ({ children }) => {
   return (
     <html lang="eng">
-      <body>{children}</body>
+      <body>
+        <Navbar />
+        <main>{children}</main>
+      </body>
     </html>
   );
 };
