@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import logo from "@/assets/images/logo-white.png";
 import profileDefault from "@/assets/images/profile.png";
 import Link from "next/link";
@@ -9,6 +10,8 @@ import { FaGoogle } from "react-icons/fa";
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const pathName = usePathname();
+  console.log(pathName);
   return (
     <nav className="bg-blue-700 border-b border-blue-500">
       <div className="max-w-7xl sm:px-6 lg:px-8 px-2 mx-auto">
@@ -61,7 +64,7 @@ const Navbar = () => {
               <div className="space-x-2 flex">
                 <Link
                   href="/"
-                  className="hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-white bg-black"
+                  className={`${pathName === "/" ? "bg-black" : ""} hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-white`}
                 >
                   Home
                 </Link>
