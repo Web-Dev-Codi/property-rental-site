@@ -70,13 +70,13 @@ const Navbar = () => {
                 </Link>
                 <Link
                   href="/properties"
-                  className="hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-white"
+                  className={`${pathName === "/properties" ? "bg-black" : ""} hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-white`}
                 >
                   Properties
                 </Link>
                 <Link
-                  href="/add"
-                  className="hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-white"
+                  href="/properties/add"
+                  className={`${pathName === "/properties/add" ? "bg-black" : ""} hover:bg-gray-900 hover:text-white rounded-md px-3 py-2 text-white`}
                 >
                   Add Property
                 </Link>
@@ -194,19 +194,19 @@ const Navbar = () => {
           <div className="space-y-1 px-2 pt-2 pb-3">
             <Link
               href="/"
-              className="rounded-md block px-3 py-2 text-base font-medium text-white bg-gray-900"
+              className={`${pathName === "/" ? "bg-black" : ""} rounded-md block px-3 py-2 text-base font-medium text-white `}
             >
               Home
             </Link>
             <Link
               href="/properties"
-              className="hover:bg-gray-700 hover:text-white rounded-md block px-3 py-2 text-base font-medium text-gray-300"
+              className={`${pathName === "/properties" ? "bg-black" : ""} rounded-md block px-3 py-2 text-base font-medium text-white `}
             >
               Properties
             </Link>
             <Link
-              href="/add"
-              className="hover:bg-gray-700 hover:text-white rounded-md block px-3 py-2 text-base font-medium text-gray-300"
+              href="/properties/add"
+              className={`${pathName === "/properties/add" ? "bg-black" : ""} rounded-md block px-3 py-2 text-base font-medium text-white `}
             >
               Add Property
             </Link>
