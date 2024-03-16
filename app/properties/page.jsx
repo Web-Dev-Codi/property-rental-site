@@ -1,5 +1,10 @@
 import PropertyCard from "@/components/PropertyCard";
-import properties from "@/properties.json";
+
+async function fetchProperties() {
+  try {
+    const res = await fetch("http://localhost:3000/api/properties");
+  } catch (error) {}
+}
 
 const PropertiesPage = () => {
   return (
