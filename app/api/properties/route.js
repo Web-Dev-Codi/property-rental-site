@@ -7,7 +7,7 @@ export const GET = async (request) => {
     connectDB();
 
     const properties = await Property.find({});
-    return Response(properties);
+    return new Response(JSON.stringify(properties));
   } catch (error) {
     console.log(error);
     return new Response("Something Ain' right bro", { status: 500 });
