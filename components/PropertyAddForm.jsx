@@ -36,10 +36,61 @@ const PropertyAddForm = () => {
   }, []);
 
   const handleChange = (e) => {
-    e.preventDefault();
+    const { name, value } = e.target;
+
+    if (name.includes(".")) {
+      const [outerKey, innerKey] = name.split(".");
+
+      setFields((prevFields) => ({
+        ...prevFields,
+        [outerKey]: {
+          ...prevFields[outerKey],
+          [innerKey]: value,
+        },
+      }));
+    } else {
+      setFields((prevFields) => ({
+        ...prevFields,
+        [name]: value,
+      }));
+    }
   };
-  const handleAmenitiesChange = () => {};
-  const handleImageChange = () => {};
+  const handleAmenitiesChange = (e) => {
+    const { value, checked } = e.target;
+    const updateAmenites = [...fields.amenities];
+
+    if (checked) {
+      updateAmenites.push(value);
+    } else {
+      const index = updateAmenites.indexOf(value);
+
+      if (index !== -1) {
+        updateAmenites.splice(index, 1);
+      }
+    }
+
+    // Update State with updated Array
+    setFields((prevFields) => ({
+      ...prevFields,
+      amenities: updateAmenites,
+    }));
+  };
+  const handleImageChange = (e) => {
+    const { files } = e.target;
+
+    // Clone images array
+    const updateImages = [...fields.images];
+
+    for (const file of files) {
+      updateImages.push(file);
+    }
+
+    // Update state with array of images
+    setFields((prevFields) => ({
+      ...prevFields,
+      images: updateImages,
+    }));
+  };
   return (
     mounted && (
       <form>
