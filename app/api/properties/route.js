@@ -13,3 +13,21 @@ export const GET = async (request) => {
     return new Response("Something Ain' right bro", { status: 500 });
   }
 };
+
+// POST request to api/properties endpoint
+export const POST = async (request) => {
+  try {
+    const formData = await request.formData();
+
+    // Access all amentities and images
+    const amentities = formData.getAll("amenities");
+    const images = formData
+      .getAll("images")
+      .filter((image) => images.name !== "");
+
+    console.log(amentities, images);
+    return new Response(JSON.stringify({ message: "Success" }));
+  } catch (error) {
+    return new Response("Failed to add property", { status: 500 });
+  }
+};
